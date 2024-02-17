@@ -73,10 +73,14 @@ const getImages = (apiURL) => {
 
 const loadMoreImages = () => {
   currentPage++;
-  let apiURL = `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`;
-  apiURL = searchTerm
-    ? `https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&per_page=${perPage}`
-    : apiURL;
+  let apiURL = null;
+
+    if(searchTerm){
+        apiURL = `https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&per_page=${perPage}`;
+    } else {
+        apiURL = `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`;
+    }
+    
   getImages(apiURL);
 };
 
