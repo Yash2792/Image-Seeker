@@ -36,9 +36,9 @@ const generateHTML = (images) => {
 
     imagesWrapper.innerHTML += images.map(img =>
         `<li class="card" onclick="showLightbox('${img.photographer}', '${img.src.large2x}')">
-            <img src="${img.src.large2x}" alt="img">
+            <img src="${img.src.large2x}" alt="img" width="100%">
             <div class="details">
-                <div class="photographer">
+                <div class="photographer" style="color: #fff; display: flex; align-items: center;">
                     <i class="uil uil-camera"></i>
                     <span>${img.photographer}</span>
                 </div>
