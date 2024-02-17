@@ -58,9 +58,11 @@ const generateHTML = (images) => {
 const getImages = (apiURL) => {
   loadMoreBtn.innerText = "Loading...";
   loadMoreBtn.classList.add("disabled");
+
   fetch(apiURL, {
     headers: { Authorization: apiKey },
   })
+  
     .then((res) => res.json())
     .then((data) => {
       // console.log(data);
@@ -74,13 +76,13 @@ const getImages = (apiURL) => {
 const loadMoreImages = () => {
   currentPage++;
   let apiURL = null;
-
+    
     if(searchTerm){
         apiURL = `https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&per_page=${perPage}`;
     } else {
         apiURL = `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`;
     }
-    
+
   getImages(apiURL);
 };
 
@@ -100,6 +102,7 @@ const loadSearchImages = (e) => {
 getImages(
   `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`
 );
+
 loadMoreBtn.addEventListener("click", loadMoreImages);
 searchInput.addEventListener("keyup", loadSearchImages);
 closeBtn.addEventListener("click", hideLightbox);
